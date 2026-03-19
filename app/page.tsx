@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar"
 import HeroSection from "@/components/hero-section"
 import ExperienceSection from "@/components/experience-section"
 import SkillsSection from "@/components/skills-section"
+import TechnologiesSection from "@/components/technologies-section"
 import CertificationsSection from "@/components/certifications-section"
 import EducationSection from "@/components/education-section"
 import LanguagesSection from "@/components/languages-section"
@@ -37,6 +38,7 @@ export default function Portfolio() {
           <HeroSection />
           <ExperienceSection />
           <SkillsSection />
+          <TechnologiesSection />
           <CertificationsSection />
           <EducationSection />
           <LanguagesSection />

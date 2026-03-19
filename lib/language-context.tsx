@@ -53,6 +53,10 @@ const translations = {
     "skills.systems": "Systèmes",
     "skills.databases": "Bases de Données",
     "skills.security": "Sécurité & Monitoring",
+
+    // Technologies
+    "technologies.section": "Technologies",
+    "technologies.title": "Technologies que j’utilise",
     
     // Certifications
     "certifications.section": "Certifications",
@@ -127,6 +131,10 @@ const translations = {
     "skills.systems": "Systems",
     "skills.databases": "Databases",
     "skills.security": "Security & Monitoring",
+
+    // Technologies
+    "technologies.section": "Technologies",
+    "technologies.title": "Technologies I use",
     
     // Certifications
     "certifications.section": "Certifications",
