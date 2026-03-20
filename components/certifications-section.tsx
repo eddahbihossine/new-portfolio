@@ -2,6 +2,7 @@
 
 import { Award, ExternalLink } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { AnimatedSection } from "@/components/animated-section"
 import { useLanguage } from "@/lib/language-context"
 
 const certifications = [
@@ -10,36 +11,42 @@ const certifications = [
     issuer: "AWS",
     year: "2024",
     color: "bg-[#FF9900]/10 text-[#FF9900]",
+    url: "https://aws.amazon.com/certification/",
   },
   {
     title: "AWS Cloud Practitioner",
     issuer: "AWS",
     year: "2024",
     color: "bg-[#FF9900]/10 text-[#FF9900]",
+    url: "https://aws.amazon.com/certification/",
   },
   {
     title: "Oracle Certified Cloud Architect Professional",
     issuer: "Oracle",
     year: "2025",
     color: "bg-[#F80000]/10 text-[#F80000]",
+    url: "https://education.oracle.com/oracle-cloud-infrastructure/",
   },
   {
     title: "Oracle Certified Professional Java SE 21",
     issuer: "Oracle",
     year: "2025",
     color: "bg-[#F80000]/10 text-[#F80000]",
+    url: "https://education.oracle.com/java/",
   },
   {
     title: "Green Digital Skills",
     issuer: "INCO",
     year: "2022",
     color: "bg-[#22C55E]/10 text-[#22C55E]",
+    url: "https://inco-group.co/",
   },
   {
     title: "Full Stack Web Developer Certification",
     issuer: "Simplon.co",
     year: "2024",
     color: "bg-primary/10 text-primary",
+    url: "https://simplon.co/",
   },
 ]
 
@@ -47,7 +54,7 @@ export default function CertificationsSection() {
   const { t } = useLanguage()
   
   return (
-    <section id="certifications" className="relative z-10 py-24 px-4">
+    <AnimatedSection id="certifications" className="relative z-10 py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-12">
           <div className="w-12 h-[2px] bg-primary" />
@@ -59,32 +66,38 @@ export default function CertificationsSection() {
         </h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certifications.map((cert, index) => (
-            <Card
-              key={index}
-              className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all hover:scale-[1.02] group cursor-pointer"
+          {certifications.map((cert) => (
+            <a
+              key={cert.title}
+              href={cert.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+              aria-label={`${cert.title} — ${cert.issuer}`}
             >
-              <CardHeader className="pb-3">
-                <div className="flex items-start justify-between">
-                  <div className={`p-2 rounded-lg ${cert.color}`}>
-                    <Award className="w-5 h-5" />
+              <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all hover:scale-[1.02] group">
+                <CardHeader className="pb-3">
+                  <div className="flex items-start justify-between">
+                    <div className={`p-2 rounded-lg ${cert.color}`}>
+                      <Award className="w-5 h-5" />
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-                <CardTitle className="text-lg text-foreground mt-4">{cert.title}</CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  {cert.issuer} • {cert.year}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${cert.color}`}>
-                  {t("certifications.certified")}
-                </div>
-              </CardContent>
-            </Card>
+                  <CardTitle className="text-lg text-foreground mt-4">{cert.title}</CardTitle>
+                  <CardDescription className="text-muted-foreground">
+                    {cert.issuer} • {cert.year}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${cert.color}`}>
+                    {t("certifications.certified")}
+                  </div>
+                </CardContent>
+              </Card>
+            </a>
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   )
 }

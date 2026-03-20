@@ -3,6 +3,7 @@
 import { Globe } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
+import { AnimatedSection } from "@/components/animated-section"
 import { useLanguage } from "@/lib/language-context"
 
 export default function LanguagesSection() {
@@ -22,7 +23,7 @@ export default function LanguagesSection() {
   ]
 
   return (
-    <section id="languages" className="relative z-10 py-24 px-4">
+    <AnimatedSection id="languages" className="relative z-10 py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-12">
           <div className="w-12 h-[2px] bg-primary" />
@@ -55,6 +56,6 @@ export default function LanguagesSection() {
           </CardContent>
         </Card>
       </div>
-    </section>
+    </AnimatedSection>
   )
 }

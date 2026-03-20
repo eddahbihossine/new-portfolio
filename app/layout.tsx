@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
+import { PageTransitions } from '@/components/page-transitions'
+import { MagneticCursor } from '@/components/MagneticCursor'
+import { LanguageProvider } from '@/lib/language-context'
 import './globals.css'
 
 const geistSans = Geist({ subsets: ["latin"], variable: "--font-sans" })
@@ -45,7 +48,10 @@ export default function RootLayout({
           enableColorScheme
           disableTransitionOnChange
         >
-          {children}
+          <LanguageProvider>
+            <MagneticCursor />
+            <PageTransitions>{children}</PageTransitions>
+          </LanguageProvider>
         </ThemeProvider>
         <Analytics />
       </body>

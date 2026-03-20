@@ -1,8 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { motion, useReducedMotion } from "framer-motion"
 import { Menu, X, Download, Moon, Sun, Globe } from "lucide-react"
 import { useTheme } from "next-themes"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -12,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
 import { useLanguage, type Language } from "@/lib/language-context"
+import { MagneticButton } from "@/components/MagneticButton"
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -19,6 +22,9 @@ export default function Navbar() {
   const { resolvedTheme, setTheme } = useTheme()
   const { language, setLanguage, t } = useLanguage()
   const [mounted, setMounted] = useState(false)
+  const shouldReduceMotion = useReducedMotion()
+  const pathname = usePathname()
+  const isHome = pathname === "/"
 
   useEffect(() => {
     setMounted(true)
@@ -29,14 +35,21 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navLinks = [
-    { name: t("nav.home"), href: "#" },
-    { name: t("nav.experience"), href: "#experience" },
-    { name: t("nav.skills"), href: "#skills" },
-    { name: t("nav.certifications"), href: "#certifications" },
-    { name: t("nav.education"), href: "#education" },
-    { name: t("nav.contact"), href: "#contact" },
-  ]
+  const navLinks = isHome
+    ? [
+        { name: t("nav.home"), href: "#home" },
+        { name: t("nav.experience"), href: "#experience" },
+        { name: t("nav.skills"), href: "#skills" },
+        { name: t("nav.certifications"), href: "#certifications" },
+        { name: t("nav.education"), href: "#education" },
+        { name: t("nav.contact"), href: "#contact" },
+        { name: t("nav.consulting"), href: "/consulting" },
+      ]
+    : [
+        { name: t("nav.home"), href: "/" },
+        { name: t("nav.consulting"), href: "/consulting" },
+        { name: t("nav.contact"), href: "#contact" },
+      ]
 
   return (
     <nav
@@ -58,13 +71,15 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
-              <a
+              <motion.a
                 key={link.name}
                 href={link.href}
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                whileHover={shouldReduceMotion ? undefined : { y: -1 }}
+                transition={{ duration: 0.2 }}
               >
                 {link.name}
-              </a>
+              </motion.a>
             ))}
             
             {/* Language Switcher */}
@@ -101,12 +116,14 @@ export default function Navbar() {
               <span className="sr-only">Toggle theme</span>
             </Button>
             
-            <Button asChild size="sm" className="gap-2">
-              <a href="/resume.pdf" download>
-                <Download className="w-4 h-4" />
-                {t("nav.cv")}
-              </a>
-            </Button>
+            <MagneticButton strength={8}>
+              <Button asChild size="sm" className="gap-2">
+                <a href={`/api/resume?lang=${language}`} download>
+                  <Download className="w-4 h-4" />
+                  {t("nav.cv")}
+                </a>
+              </Button>
+            </MagneticButton>
           </div>
 
           {/* Mobile Menu Button */}
@@ -168,7 +185,7 @@ export default function Navbar() {
                 </a>
               ))}
               <Button asChild size="sm" className="gap-2 w-full">
-                <a href="/resume.pdf" download>
+                <a href={`/api/resume?lang=${language}`} download>
                   <Download className="w-4 h-4" />
                   {t("nav.download_cv")}
                 </a>

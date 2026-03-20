@@ -2,6 +2,7 @@
 
 import { GraduationCap, Calendar, MapPin } from "lucide-react"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { AnimatedSection } from "@/components/animated-section"
 import { useLanguage } from "@/lib/language-context"
 
 export default function EducationSection() {
@@ -40,14 +41,14 @@ export default function EducationSection() {
       degree: language === "fr"
         ? "Baccalauréat Scientifique International, Physique-Chimie"
         : "International Scientific Baccalaureate, Physics-Chemistry",
-      location: "El Hajeb, Morocco",
+      location: "Morocco",
       period: "01/2020 – 09/2020",
       highlight: false,
     },
   ]
 
   return (
-    <section id="education" className="relative z-10 py-24 px-4 bg-secondary/20">
+    <AnimatedSection id="education" className="relative z-10 py-24 px-4 bg-secondary/20">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-12">
           <div className="w-12 h-[2px] bg-primary" />
@@ -108,6 +109,6 @@ export default function EducationSection() {
           </div>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   )
 }

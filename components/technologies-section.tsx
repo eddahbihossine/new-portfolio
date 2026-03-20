@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/lib/language-context"
 import { Cloud, CloudCog } from "lucide-react"
+import { AnimatedSection } from "@/components/animated-section"
 
 import {
   siTerraform,
@@ -62,7 +63,7 @@ export default function TechnologiesSection() {
   const { t } = useLanguage()
 
   return (
-    <section id="technologies" className="relative z-10 py-24 px-4">
+    <AnimatedSection id="technologies" className="relative z-10 py-24 px-4">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-8">
           {t("technologies.section")}
@@ -78,6 +79,6 @@ export default function TechnologiesSection() {
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   )
 }

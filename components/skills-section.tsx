@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Code, Cloud, Database, Server, Terminal, Shield } from "lucide-react"
+import { AnimatedSection } from "@/components/animated-section"
 import { useLanguage } from "@/lib/language-context"
 
 export default function SkillsSection() {
@@ -42,7 +43,7 @@ export default function SkillsSection() {
   ]
 
   return (
-    <section id="skills" className="relative z-10 py-24 px-4 bg-secondary/20">
+    <AnimatedSection id="skills" className="relative z-10 py-24 px-4 bg-secondary/20">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-12">
           <div className="w-12 h-[2px] bg-primary" />
@@ -84,6 +85,6 @@ export default function SkillsSection() {
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   )
 }

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
 
 export default function HeroSection() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   
   return (
     <section className="relative z-10 min-h-screen flex items-center justify-center px-4">
@@ -31,7 +31,7 @@ export default function HeroSection() {
         
         <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
           <Button asChild size="lg" className="gap-2">
-            <a href="/resume.pdf" download>
+            <a href={`/api/resume?lang=${language}`} download>
               <Download className="w-4 h-4" />
               {t("hero.download_cv")}
             </a>

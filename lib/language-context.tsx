@@ -19,6 +19,7 @@ const translations = {
     "nav.certifications": "Certifications",
     "nav.education": "Formation",
     "nav.contact": "Contact",
+    "nav.consulting": "Consulting",
     "nav.cv": "CV",
     "nav.download_cv": "Télécharger CV",
     
@@ -30,6 +31,7 @@ const translations = {
     "hero.description": "Spécialisé en automatisation, développement Python et intégration de solutions d'exploitation. Passionné par la création de scripts et pipelines d'automatisation, la mise en place de monitoring/alerting et l'optimisation d'infrastructures.",
     "hero.download_cv": "Télécharger CV",
     "hero.contact_me": "Me contacter",
+    "hero.available_consulting": "Disponible pour du consulting",
     
     // Experience
     "experience.section": "Expérience",
@@ -85,6 +87,19 @@ const translations = {
     "contact.download_cv": "Télécharger mon CV",
     "contact.download_cv_desc": "Obtenez une copie complète de mon parcours professionnel",
     "contact.download_cv_btn": "Télécharger CV (PDF)",
+    "contact.consulting_cta": "Consulting — Parlons de votre projet",
+
+    // Consulting page
+    "consulting.section": "Consulting",
+    "consulting.title": "Disponible pour du consulting",
+    "consulting.description": "Je peux vous accompagner sur des sujets DevOps/Cloud: CI/CD, IaC (Terraform), Kubernetes, observabilité, fiabilité et automatisation.",
+    "consulting.form_title": "Demande de mission",
+    "consulting.form_desc": "Remplissez ce formulaire et votre client mail s’ouvrira avec un message pré-rempli.",
+    "consulting.name": "Nom",
+    "consulting.email": "Email",
+    "consulting.company": "Entreprise (optionnel)",
+    "consulting.message": "Message",
+    "consulting.submit": "Envoyer",
     
     // Footer
     "footer.rights": "Tous droits réservés.",
@@ -97,6 +112,7 @@ const translations = {
     "nav.certifications": "Certifications",
     "nav.education": "Education",
     "nav.contact": "Contact",
+    "nav.consulting": "Consulting",
     "nav.cv": "CV",
     "nav.download_cv": "Download CV",
     
@@ -108,6 +124,7 @@ const translations = {
     "hero.description": "Specialized in automation, Python development, and integration of operational solutions. Passionate about creating scripts and automation pipelines, implementing monitoring/alerting systems, and optimizing infrastructures.",
     "hero.download_cv": "Download CV",
     "hero.contact_me": "Contact me",
+    "hero.available_consulting": "Available for consulting",
     
     // Experience
     "experience.section": "Experience",
@@ -163,6 +180,19 @@ const translations = {
     "contact.download_cv": "Download my CV",
     "contact.download_cv_desc": "Get a complete copy of my professional background",
     "contact.download_cv_btn": "Download CV (PDF)",
+    "contact.consulting_cta": "Consulting — Let’s discuss your project",
+
+    // Consulting page
+    "consulting.section": "Consulting",
+    "consulting.title": "Available for consulting",
+    "consulting.description": "I can help with DevOps/Cloud topics: CI/CD, IaC (Terraform), Kubernetes, observability, reliability, and automation.",
+    "consulting.form_title": "Client inquiry",
+    "consulting.form_desc": "Fill this form and your email client will open with a pre-filled message.",
+    "consulting.name": "Name",
+    "consulting.email": "Email",
+    "consulting.company": "Company (optional)",
+    "consulting.message": "Message",
+    "consulting.submit": "Send",
     
     // Footer
     "footer.rights": "All rights reserved.",
