@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, useReducedMotion } from "framer-motion"
-import { Menu, X, Download, Moon, Sun, Globe } from "lucide-react"
+import { Menu, X, Download, Moon, Sun, ChevronDown } from "lucide-react"
 import { useTheme } from "next-themes"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -10,11 +10,14 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
 import { useLanguage, type Language } from "@/lib/language-context"
-import { MagneticButton } from "@/components/MagneticButton"
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -54,137 +57,164 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border/50"
-          : "bg-transparent"
+        "fixed top-3 sm:top-4 left-0 right-0 z-50 transition-all duration-300"
       )}
     >
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <a href="#" className="text-xl font-bold text-foreground">
-            <span className="text-primary">{"<"}</span>
-            EH.Eddahbi
-            <span className="text-primary">{" />"}</span>
+      <div className="max-w-6xl mx-auto px-3 sm:px-4">
+        <div
+          className={cn(
+            "flex h-11 sm:h-12 items-center justify-between gap-3 rounded-none border border-border/60 bg-background/60 backdrop-blur-xl px-3 sm:px-4",
+            isScrolled ? "bg-background/75" : "bg-background/50"
+          )}
+        >
+          <a
+            href="#"
+            className="inline-flex h-9 items-center font-sans text-[13px] sm:text-sm font-semibold uppercase tracking-[0.32em] text-foreground leading-none whitespace-nowrap"
+          >
+            EH • Eddahbi
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden xl:flex items-center justify-end gap-8">
             {navLinks.map((link) => (
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="group relative inline-flex h-9 items-center text-[11px] font-semibold uppercase tracking-[0.34em] text-muted-foreground transition-colors hover:text-foreground leading-none"
                 whileHover={shouldReduceMotion ? undefined : { y: -1 }}
                 transition={{ duration: 0.2 }}
               >
-                {link.name}
+                <span className="relative">
+                  {link.name}
+                  <span className="pointer-events-none absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-foreground/70 transition-transform duration-300 group-hover:scale-x-100" />
+                </span>
               </motion.a>
             ))}
-            
-            {/* Language Switcher */}
+
+            <div className="h-5 w-px bg-border/70" />
+
+            {/* Settings */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-9 w-9">
-                  <Globe className="h-4 w-4" />
-                  <span className="sr-only">Switch language</span>
+                <Button
+                  id="settings-menu-trigger"
+                  type="button"
+                  variant="outline"
+                  className="rounded-none h-9 px-3 py-0 leading-none"
+                >
+                  <span className="text-[11px] font-semibold tracking-[0.32em]">Settings</span>
+                  <ChevronDown className="h-4 w-4 opacity-70" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setLanguage("fr")} className={language === "fr" ? "bg-accent" : ""}>
-                  Français
+              <DropdownMenuContent align="end" className="min-w-[14rem]">
+                <DropdownMenuLabel className="font-mono text-[10px] uppercase tracking-[0.34em] text-muted-foreground">
+                  Settings
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+
+                <DropdownMenuLabel className="font-mono text-[10px] uppercase tracking-[0.34em] text-muted-foreground">
+                  Language
+                </DropdownMenuLabel>
+                <DropdownMenuRadioGroup
+                  value={language}
+                  onValueChange={(value) => setLanguage(value as Language)}
+                >
+                  <DropdownMenuRadioItem value="fr">Français</DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="en">English</DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+
+                <DropdownMenuSeparator />
+
+                <DropdownMenuItem onSelect={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+                >
+                  {mounted && resolvedTheme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                  Theme
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage("en")} className={language === "en" ? "bg-accent" : ""}>
-                  English
+
+                <DropdownMenuItem asChild>
+                  <a href={`/api/resume?lang=${language}`} download>
+                    <Download className="h-4 w-4" />
+                    {t("nav.cv")}
+                  </a>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            
-            {/* Theme Switcher */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="relative h-9 w-9"
-              onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            >
-              {mounted && (
-                <>
-                  <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                  <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                </>
-              )}
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-            
-            <MagneticButton strength={8}>
-              <Button asChild size="sm" className="gap-2">
-                <a href={`/api/resume?lang=${language}`} download>
-                  <Download className="w-4 h-4" />
-                  {t("nav.cv")}
-                </a>
-              </Button>
-            </MagneticButton>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-2">
-            {/* Mobile Language Switcher */}
+          <div className="xl:hidden flex items-center gap-2">
+            {/* Mobile Settings */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-9 w-9">
-                  <Globe className="h-4 w-4" />
+                <Button
+                  id="settings-menu-trigger-mobile"
+                  type="button"
+                  variant="outline"
+                  className="rounded-none h-9 px-3 py-0 leading-none"
+                >
+                  <span className="text-[11px] font-semibold tracking-[0.24em]">Settings</span>
+                  <ChevronDown className="h-4 w-4 opacity-70" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setLanguage("fr")} className={language === "fr" ? "bg-accent" : ""}>
-                  Français
+              <DropdownMenuContent align="end" className="min-w-[14rem]">
+                <DropdownMenuLabel className="font-mono text-[10px] uppercase tracking-[0.34em] text-muted-foreground">
+                  Settings
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+
+                <DropdownMenuLabel className="font-mono text-[10px] uppercase tracking-[0.34em] text-muted-foreground">
+                  Language
+                </DropdownMenuLabel>
+                <DropdownMenuRadioGroup
+                  value={language}
+                  onValueChange={(value) => setLanguage(value as Language)}
+                >
+                  <DropdownMenuRadioItem value="fr">Français</DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="en">English</DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+
+                <DropdownMenuSeparator />
+
+                <DropdownMenuItem onSelect={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+                >
+                  {mounted && resolvedTheme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                  Theme
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage("en")} className={language === "en" ? "bg-accent" : ""}>
-                  English
+
+                <DropdownMenuItem asChild>
+                  <a href={`/api/resume?lang=${language}`} download>
+                    <Download className="h-4 w-4" />
+                    {t("nav.cv")}
+                  </a>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
             
-            {/* Mobile Theme Switcher */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="relative h-9 w-9"
-              onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            >
-              {mounted && (
-                <>
-                  <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                  <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                </>
-              )}
-            </Button>
-            
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-muted-foreground hover:text-foreground"
+              className="size-9 rounded-none p-0 text-muted-foreground hover:text-foreground flex items-center justify-center opacity-90 transition-opacity hover:opacity-100"
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border/50 bg-background/95 backdrop-blur-lg">
+          <div className="md:hidden mt-2 py-3 border border-border/60 bg-background/70 backdrop-blur-xl">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors py-2"
+                  className="text-xs font-medium uppercase tracking-[0.24em] text-muted-foreground hover:text-foreground transition-colors py-1.5"
                 >
                   {link.name}
                 </a>
               ))}
-              <Button asChild size="sm" className="gap-2 w-full">
+              <Button asChild size="sm" variant="outline" className="gap-2 w-full rounded-none">
                 <a href={`/api/resume?lang=${language}`} download>
                   <Download className="w-4 h-4" />
                   {t("nav.download_cv")}

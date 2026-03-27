@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Cloud Automation Toolkit architecture diagram">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .stroke { fill: none; stroke: #0a0a0a; stroke-width: 3; }
+      .muted { fill: none; stroke: #0a0a0a; stroke-opacity: 0.35; stroke-width: 2; }
+      .box { fill: none; stroke: #0a0a0a; stroke-width: 3; }
+      .title { font: 700 26px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; fill: #0a0a0a; letter-spacing: 0.22em; text-transform: uppercase; }
+      .label { font: 600 18px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; fill: #0a0a0a; letter-spacing: 0.08em; }
+      .small { font: 500 14px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberations Mono, monospace; fill: #0a0a0a; letter-spacing: 0.12em; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6" fill="#0a0a0a" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="900" />
+
+  <!-- subtle grid -->
+  <g opacity="0.16">
+    <path class="muted" d="M0 150 H1600" />
+    <path class="muted" d="M0 300 H1600" />
+    <path class="muted" d="M0 450 H1600" />
+    <path class="muted" d="M0 600 H1600" />
+    <path class="muted" d="M0 750 H1600" />
+    <path class="muted" d="M200 0 V900" />
+    <path class="muted" d="M400 0 V900" />
+    <path class="muted" d="M600 0 V900" />
+    <path class="muted" d="M800 0 V900" />
+    <path class="muted" d="M1000 0 V900" />
+    <path class="muted" d="M1200 0 V900" />
+    <path class="muted" d="M1400 0 V900" />
+  </g>
+
+  <text x="80" y="92" class="title">Cloud Automation Toolkit</text>
+  <text x="80" y="126" class="small">PLAN / APPROVE / APPLY • AUDITABLE IaC</text>
+
+  <!-- nodes -->
+  <rect x="90" y="210" width="330" height="110" rx="0" class="box" />
+  <text x="120" y="255" class="label">Developer</text>
+  <text x="120" y="285" class="small">PR-driven changes</text>
+
+  <rect x="510" y="210" width="360" height="110" class="box" />
+  <text x="540" y="255" class="label">Git Repository</text>
+  <text x="540" y="285" class="small">source of truth</text>
+
+  <rect x="960" y="190" width="520" height="150" class="box" />
+  <text x="990" y="240" class="label">CI Pipeline</text>
+  <text x="990" y="270" class="small">fmt • lint • validate • plan</text>
+  <rect x="990" y="290" width="210" height="32" class="box" />
+  <text x="1005" y="312" class="small">Plan Artifact</text>
+  <rect x="1230" y="290" width="220" height="32" class="box" />
+  <text x="1245" y="312" class="small">Policy Gates</text>
+
+  <rect x="510" y="420" width="420" height="130" class="box" />
+  <text x="540" y="465" class="label">Approval</text>
+  <text x="540" y="495" class="small">human or policy engine</text>
+
+  <rect x="990" y="420" width="490" height="130" class="box" />
+  <text x="1020" y="465" class="label">Apply Job</text>
+  <text x="1020" y="495" class="small">terraform apply (audited)</text>
+
+  <rect x="270" y="610" width="420" height="150" class="box" />
+  <text x="300" y="660" class="label">Remote State + Lock</text>
+  <text x="300" y="690" class="small">drift-resistant workflow</text>
+
+  <rect x="760" y="610" width="360" height="150" class="box" />
+  <text x="790" y="660" class="label">Cloud Provider</text>
+  <text x="790" y="690" class="small">resources created</text>
+
+  <rect x="1170" y="610" width="330" height="150" class="box" />
+  <text x="1200" y="660" class="label">Audit Trail</text>
+  <text x="1200" y="690" class="small">logs • diffs • approvals</text>
+
+  <!-- arrows -->
+  <path class="stroke" d="M420 265 H510" marker-end="url(#arrow)" />
+  <path class="stroke" d="M870 265 H960" marker-end="url(#arrow)" />
+  <path class="stroke" d="M1220 345 V420" marker-end="url(#arrow)" />
+  <path class="stroke" d="M930 485 H990" marker-end="url(#arrow)" />
+
+  <path class="stroke" d="M1130 550 V610" marker-end="url(#arrow)" />
+  <path class="stroke" d="M1280 550 V610" marker-end="url(#arrow)" />
+  <path class="stroke" d="M1075 550 V610" marker-end="url(#arrow)" />
+
+  <path class="stroke" d="M990 485 C820 485, 820 485, 720 485" marker-end="url(#arrow)" />
+
+  <!-- caption bar -->
+  <rect x="80" y="820" width="1440" height="1" fill="#0a0a0a" fill-opacity="0.5" />
+  <text x="80" y="858" class="small">Generated diagram • monochrome vector • matches site theme</text>
+</svg>

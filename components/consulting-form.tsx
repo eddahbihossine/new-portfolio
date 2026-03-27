@@ -53,48 +53,71 @@ export function ConsultingForm() {
   }
 
   return (
-    <Card className="bg-card/50 backdrop-blur-sm border-border/50">
-      <CardHeader>
-        <CardTitle className="text-xl text-foreground">{t("consulting.form_title")}</CardTitle>
+    <Card className="rounded-none bg-card/35 backdrop-blur-sm border-border/70">
+      <CardHeader className="pb-4">
+        <div className="font-mono text-[10px] uppercase tracking-[0.34em] text-muted-foreground">Inquiry</div>
+        <CardTitle className="mt-3 text-xl text-foreground">{t("consulting.form_title")}</CardTitle>
         <CardDescription className="text-muted-foreground">{t("consulting.form_desc")}</CardDescription>
       </CardHeader>
-      <CardContent>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+      <CardContent className="pb-6">
+        <div className="mb-6 h-px w-full bg-border/70" />
+
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">{t("consulting.name")}</Label>
-            <Input id="name" {...form.register("name")} />
+            <Label
+              htmlFor="name"
+              className="font-mono text-[10px] uppercase tracking-[0.34em] text-muted-foreground"
+            >
+              {t("consulting.name")}
+            </Label>
+            <Input id="name" className="rounded-none border-border/60 bg-background/20" {...form.register("name")} />
             {form.formState.errors.name ? (
               <p className="text-sm text-destructive">{form.formState.errors.name.message}</p>
             ) : null}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="email">{t("consulting.email")}</Label>
-            <Input id="email" type="email" {...form.register("email")} />
+            <Label
+              htmlFor="email"
+              className="font-mono text-[10px] uppercase tracking-[0.34em] text-muted-foreground"
+            >
+              {t("consulting.email")}
+            </Label>
+            <Input id="email" type="email" className="rounded-none border-border/60 bg-background/20" {...form.register("email")} />
             {form.formState.errors.email ? (
               <p className="text-sm text-destructive">{form.formState.errors.email.message}</p>
             ) : null}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="company">{t("consulting.company")}</Label>
-            <Input id="company" {...form.register("company")} />
+            <Label
+              htmlFor="company"
+              className="font-mono text-[10px] uppercase tracking-[0.34em] text-muted-foreground"
+            >
+              {t("consulting.company")}
+            </Label>
+            <Input id="company" className="rounded-none border-border/60 bg-background/20" {...form.register("company")} />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="message">{t("consulting.message")}</Label>
-            <Textarea id="message" rows={6} {...form.register("message")} />
+            <Label
+              htmlFor="message"
+              className="font-mono text-[10px] uppercase tracking-[0.34em] text-muted-foreground"
+            >
+              {t("consulting.message")}
+            </Label>
+            <Textarea id="message" rows={6} className="rounded-none border-border/60 bg-background/20" {...form.register("message")} />
             {form.formState.errors.message ? (
               <p className="text-sm text-destructive">{form.formState.errors.message.message}</p>
             ) : null}
           </div>
 
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full rounded-none">
             {t("consulting.submit")}
           </Button>
 
           <p className="text-xs text-muted-foreground">
-            Or email directly: <a className="underline underline-offset-4 hover:text-primary" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            Or email directly: <a className="underline underline-offset-4 hover:text-foreground" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </p>
         </form>
       </CardContent>

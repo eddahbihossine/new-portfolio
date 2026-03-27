@@ -44,8 +44,8 @@ export function MagneticCursor() {
         translateY: "-50%",
       }}
     >
-      <div className="h-3 w-3 rounded-full bg-primary/60" />
-      <div className="absolute inset-0 -m-2 rounded-full border border-primary/25" />
+      <div className="h-3 w-3 rounded-full bg-foreground/60" />
+      <div className="absolute inset-0 -m-2 rounded-full border border-foreground/25" />
     </motion.div>
   )
 }

@@ -39,20 +39,20 @@ const technologies: Technology[] = [
 
 function TechnologyChip({ tech }: { tech: Technology }) {
   return (
-    <div className="group flex items-center gap-3 rounded-md border border-border bg-background/40 px-3 py-2 transition-colors hover:border-primary/40 hover:bg-accent/20">
+    <div className="group flex items-center gap-3 rounded-none border border-border/70 bg-background/30 px-3 py-2 transition-colors hover:bg-foreground hover:text-background">
       {tech.kind === "simple" ? (
         <svg
           aria-hidden="true"
           viewBox="0 0 24 24"
-          className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary"
+          className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-background"
           fill="currentColor"
         >
           <path d={tech.icon.path} />
         </svg>
       ) : (
-        <tech.icon className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
+        <tech.icon className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-background" />
       )}
-      <span className="text-sm text-foreground transition-colors group-hover:text-foreground">
+      <span className="text-sm text-foreground transition-colors group-hover:text-background">
         {tech.label}
       </span>
     </div>
@@ -63,13 +63,16 @@ export default function TechnologiesSection() {
   const { t } = useLanguage()
 
   return (
-    <AnimatedSection id="technologies" className="relative z-10 py-24 px-4">
+    <AnimatedSection id="technologies" className="relative z-10 border-t border-border/60 py-16 sm:py-24 px-4">
       <div className="max-w-2xl mx-auto">
-        <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-8">
-          {t("technologies.section")}
-        </h2>
+        <div className="mb-10 flex items-center justify-start gap-4">
+          <h2 className="font-mono text-xs uppercase tracking-[0.34em] text-muted-foreground">
+            {t("technologies.section")}
+          </h2>
+          <div className="h-px flex-1 bg-border" />
+        </div>
 
-        <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-balance">
+        <h3 className="text-4xl md:text-6xl font-semibold tracking-tight text-foreground mb-12 text-balance">
           {t("technologies.title")}
         </h3>
 

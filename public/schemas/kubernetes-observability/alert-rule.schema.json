@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/kubernetes-observability/alert-rule.schema.json",
+  "title": "AlertRule",
+  "type": "object",
+  "required": ["id", "name", "severity", "expression", "for", "labels", "annotations"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9\\-_.]+$" },
+    "name": { "type": "string", "minLength": 3 },
+    "severity": { "type": "string", "enum": ["info", "warning", "critical"] },
+    "expression": {
+      "type": "string",
+      "description": "Query language expression (e.g., PromQL-like)."
+    },
+    "for": {
+      "type": "string",
+      "description": "Minimum duration before firing (e.g., 5m, 10m)."
+    },
+    "labels": {
+      "type": "object",
+      "required": ["service", "team"],
+      "additionalProperties": { "type": "string" },
+      "properties": {
+        "service": { "type": "string" },
+        "team": { "type": "string" },
+        "environment": { "type": "string" },
+        "cluster": { "type": "string" }
+      }
+    },
+    "annotations": {
+      "type": "object",
+      "required": ["summary", "runbook"],
+      "additionalProperties": { "type": "string" },
+      "properties": {
+        "summary": { "type": "string" },
+        "description": { "type": "string" },
+        "runbook": { "type": "string", "format": "uri" },
+        "dashboard": { "type": "string", "format": "uri" }
+      }
+    }
+  }
+}

@@ -10,42 +10,36 @@ const certifications = [
     title: "AWS Solution Architect",
     issuer: "AWS",
     year: "2024",
-    color: "bg-[#FF9900]/10 text-[#FF9900]",
     url: "https://aws.amazon.com/certification/",
   },
   {
     title: "AWS Cloud Practitioner",
     issuer: "AWS",
     year: "2024",
-    color: "bg-[#FF9900]/10 text-[#FF9900]",
     url: "https://aws.amazon.com/certification/",
   },
   {
     title: "Oracle Certified Cloud Architect Professional",
     issuer: "Oracle",
     year: "2025",
-    color: "bg-[#F80000]/10 text-[#F80000]",
     url: "https://education.oracle.com/oracle-cloud-infrastructure/",
   },
   {
     title: "Oracle Certified Professional Java SE 21",
     issuer: "Oracle",
     year: "2025",
-    color: "bg-[#F80000]/10 text-[#F80000]",
     url: "https://education.oracle.com/java/",
   },
   {
     title: "Green Digital Skills",
     issuer: "INCO",
     year: "2022",
-    color: "bg-[#22C55E]/10 text-[#22C55E]",
     url: "https://inco-group.co/",
   },
   {
     title: "Full Stack Web Developer Certification",
     issuer: "Simplon.co",
     year: "2024",
-    color: "bg-primary/10 text-primary",
     url: "https://simplon.co/",
   },
 ]
@@ -54,14 +48,16 @@ export default function CertificationsSection() {
   const { t } = useLanguage()
   
   return (
-    <AnimatedSection id="certifications" className="relative z-10 py-24 px-4">
+    <AnimatedSection id="certifications" className="relative z-10 border-t border-border/60 py-16 sm:py-24 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center gap-3 mb-12">
-          <div className="w-12 h-[2px] bg-primary" />
-          <h2 className="text-sm font-medium text-primary uppercase tracking-wider">{t("certifications.section")}</h2>
+        <div className="mb-10 flex items-center justify-start gap-4">
+          <h2 className="font-mono text-xs uppercase tracking-[0.34em] text-muted-foreground">
+            {t("certifications.section")}
+          </h2>
+          <div className="h-px flex-1 bg-border" />
         </div>
         
-        <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-balance">
+        <h3 className="text-4xl md:text-6xl font-semibold tracking-tight text-foreground mb-12 text-balance">
           {t("certifications.title")}
         </h3>
         
@@ -75,10 +71,10 @@ export default function CertificationsSection() {
               className="block"
               aria-label={`${cert.title} — ${cert.issuer}`}
             >
-              <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all hover:scale-[1.02] group">
+              <Card className="rounded-none bg-card/40 backdrop-blur-sm border-border/60 hover:border-foreground/40 transition-all group">
                 <CardHeader className="pb-3">
                   <div className="flex items-start justify-between">
-                    <div className={`p-2 rounded-lg ${cert.color}`}>
+                    <div className="p-2 rounded-none border border-border/60 bg-background/40 text-foreground">
                       <Award className="w-5 h-5" />
                     </div>
                     <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -89,7 +85,7 @@ export default function CertificationsSection() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${cert.color}`}>
+                  <div className="inline-flex items-center gap-2 border border-border/60 bg-background/40 px-3 py-1 text-xs font-medium text-foreground">
                     {t("certifications.certified")}
                   </div>
                 </CardContent>

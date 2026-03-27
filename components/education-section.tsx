@@ -48,14 +48,16 @@ export default function EducationSection() {
   ]
 
   return (
-    <AnimatedSection id="education" className="relative z-10 py-24 px-4 bg-secondary/20">
+    <AnimatedSection id="education" className="relative z-10 border-t border-border/60 py-16 sm:py-24 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center gap-3 mb-12">
-          <div className="w-12 h-[2px] bg-primary" />
-          <h2 className="text-sm font-medium text-primary uppercase tracking-wider">{t("education.section")}</h2>
+        <div className="mb-14 flex items-center gap-4">
+          <div className="h-px w-14 bg-border" />
+          <h2 className="font-mono text-xs uppercase tracking-[0.34em] text-muted-foreground">
+            {t("education.section")}
+          </h2>
         </div>
         
-        <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-balance">
+        <h3 className="text-4xl md:text-6xl font-semibold tracking-tight text-foreground mb-12 text-balance">
           {t("education.title")}
         </h3>
         
@@ -68,26 +70,26 @@ export default function EducationSection() {
               <div key={index} className="relative pl-12 md:pl-20">
                 {/* Timeline dot */}
                 <div
-                  className={`absolute left-2.5 md:left-6.5 w-4 h-4 rounded-full border-2 ${
+                  className={`absolute left-2.5 md:left-6.5 w-4 h-4 rounded-none border-2 ${
                     edu.highlight
-                      ? "bg-primary border-primary"
-                      : "bg-card border-border"
+                      ? "bg-foreground border-foreground"
+                      : "bg-background border-border"
                   }`}
                 />
                 
                 <Card
-                  className={`bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-colors ${
-                    edu.highlight ? "border-l-2 border-l-primary" : ""
+                  className={`rounded-none bg-card/35 backdrop-blur-sm border-border/70 hover:border-foreground/30 transition-colors ${
+                    edu.highlight ? "border-l-2 border-l-foreground" : ""
                   }`}
                 >
                   <CardHeader>
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                       <div>
                         <CardTitle className="text-lg text-foreground flex items-center gap-2">
-                          <GraduationCap className="w-5 h-5 text-primary" />
+                          <GraduationCap className="w-5 h-5 text-foreground" />
                           {edu.institution}
                         </CardTitle>
-                        <CardDescription className="text-primary mt-1 font-medium">
+                        <CardDescription className="text-muted-foreground mt-1 font-medium">
                           {edu.degree}
                         </CardDescription>
                       </div>

@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/cloud-automation-toolkit/deployment-spec.schema.json",
+  "title": "DeploymentSpec",
+  "type": "object",
+  "required": ["environment", "cloud", "network", "tags"],
+  "additionalProperties": false,
+  "properties": {
+    "environment": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Logical environment name (e.g., dev, stage, prod)."
+    },
+    "cloud": {
+      "type": "object",
+      "required": ["provider", "region"],
+      "additionalProperties": false,
+      "properties": {
+        "provider": { "type": "string", "enum": ["aws", "azure", "gcp"] },
+        "region": { "type": "string", "minLength": 2 },
+        "accountId": {
+          "type": "string",
+          "description": "Optional account/subscription/project identifier."
+        }
+      }
+    },
+    "network": {
+      "type": "object",
+      "required": ["cidr"],
+      "additionalProperties": false,
+      "properties": {
+        "cidr": {
+          "type": "string",
+          "pattern": "^(?:\\d{1,3}\\.){3}\\d{1,3}\\/\\d{1,2}$",
+          "description": "Primary VPC/VNet CIDR block."
+        },
+        "availabilityZones": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "publicSubnets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "cidr"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "cidr": {
+                "type": "string",
+                "pattern": "^(?:\\d{1,3}\\.){3}\\d{1,3}\\/\\d{1,2}$"
+              }
+            }
+          }
+        },
+        "privateSubnets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "cidr"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "cidr": {
+                "type": "string",
+                "pattern": "^(?:\\d{1,3}\\.){3}\\d{1,3}\\/\\d{1,2}$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "iam": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "principals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "type"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "type": {
+                "type": "string",
+                "enum": ["user", "group", "role", "serviceAccount"]
+              },
+              "policies": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "workloads": {
+      "type": "array",
+      "description": "Optional workload declarations for standardized compute patterns.",
+      "items": {
+        "type": "object",
+        "required": ["name", "kind"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "kind": { "type": "string", "enum": ["vm", "container", "kubernetes"] },
+          "size": { "type": "string" },
+          "replicas": { "type": "integer", "minimum": 0 },
+          "dependencies": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "tags": {
+      "type": "object",
+      "description": "Standard tags/labels applied to all resources.",
+      "additionalProperties": { "type": "string" }
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "requireApprovalForApply": { "type": "boolean", "default": true },
+        "allowDestroy": { "type": "boolean", "default": false },
+        "policyPack": {
+          "type": "string",
+          "description": "Optional policy pack name/version."
+        }
+      }
+    }
+  }
+}

@@ -7,12 +7,12 @@ export function ConsultingHeader() {
 
   return (
     <>
-      <div className="flex items-center gap-3 mb-8">
-        <div className="w-12 h-[2px] bg-primary" />
-        <h1 className="text-sm font-medium text-primary uppercase tracking-wider">{t("consulting.section")}</h1>
+      <div className="mb-10 flex items-center justify-start gap-4">
+        <h1 className="font-mono text-xs uppercase tracking-[0.34em] text-muted-foreground">{t("consulting.section")}</h1>
+        <div className="h-px flex-1 bg-border" />
       </div>
 
-      <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">{t("consulting.title")}</h2>
+      <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-foreground text-balance">{t("consulting.title")}</h2>
       <p className="mt-4 text-lg text-muted-foreground leading-relaxed text-pretty">{t("consulting.description")}</p>
     </>
   )

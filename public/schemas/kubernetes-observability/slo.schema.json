@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/kubernetes-observability/slo.schema.json",
+  "title": "SLO",
+  "type": "object",
+  "required": ["service", "objective", "window", "indicator"],
+  "additionalProperties": false,
+  "properties": {
+    "service": { "type": "string" },
+    "objective": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Target success fraction (e.g., 0.99 for 99%)."
+    },
+    "window": {
+      "type": "string",
+      "description": "Evaluation window (e.g., 7d, 28d)."
+    },
+    "indicator": {
+      "type": "object",
+      "required": ["type", "good", "total"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "type": "string", "enum": ["availability", "latency", "error-rate"] },
+        "good": { "type": "string", "description": "Expression for good events." },
+        "total": { "type": "string", "description": "Expression for total events." }
+      }
+    },
+    "alerting": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "burnRateThresholds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["severity", "multiplier", "for"],
+            "additionalProperties": false,
+            "properties": {
+              "severity": { "type": "string", "enum": ["warning", "critical"] },
+              "multiplier": { "type": "number", "minimum": 1 },
+              "for": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Kubernetes Observability signal flow diagram">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .stroke { fill: none; stroke: #0a0a0a; stroke-width: 3; }
+      .muted { fill: none; stroke: #0a0a0a; stroke-opacity: 0.35; stroke-width: 2; }
+      .box { fill: none; stroke: #0a0a0a; stroke-width: 3; }
+      .title { font: 700 26px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; fill: #0a0a0a; letter-spacing: 0.22em; text-transform: uppercase; }
+      .label { font: 600 18px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; fill: #0a0a0a; letter-spacing: 0.08em; }
+      .small { font: 500 14px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberations Mono, monospace; fill: #0a0a0a; letter-spacing: 0.12em; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6" fill="#0a0a0a" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="900" />
+
+  <!-- subtle grid -->
+  <g opacity="0.16">
+    <path class="muted" d="M0 150 H1600" />
+    <path class="muted" d="M0 300 H1600" />
+    <path class="muted" d="M0 450 H1600" />
+    <path class="muted" d="M0 600 H1600" />
+    <path class="muted" d="M0 750 H1600" />
+    <path class="muted" d="M200 0 V900" />
+    <path class="muted" d="M400 0 V900" />
+    <path class="muted" d="M600 0 V900" />
+    <path class="muted" d="M800 0 V900" />
+    <path class="muted" d="M1000 0 V900" />
+    <path class="muted" d="M1200 0 V900" />
+    <path class="muted" d="M1400 0 V900" />
+  </g>
+
+  <text x="80" y="92" class="title">Kubernetes Observability</text>
+  <text x="80" y="126" class="small">METRICS • LOGS • TRACES → ALERTS &amp; DASHBOARDS</text>
+
+  <!-- left: cluster -->
+  <rect x="90" y="190" width="550" height="520" class="box" />
+  <text x="120" y="235" class="label">Kubernetes Cluster</text>
+  <text x="120" y="265" class="small">apps • nodes • control plane</text>
+
+  <rect x="140" y="310" width="220" height="90" class="box" />
+  <text x="160" y="350" class="label">Workloads</text>
+  <text x="160" y="378" class="small">pods / services</text>
+
+  <rect x="390" y="310" width="210" height="90" class="box" />
+  <text x="410" y="350" class="label">Node</text>
+  <text x="410" y="378" class="small">kubelet</text>
+
+  <rect x="140" y="430" width="220" height="90" class="box" />
+  <text x="160" y="470" class="label">Logs</text>
+  <text x="160" y="498" class="small">stdout / events</text>
+
+  <rect x="390" y="430" width="210" height="90" class="box" />
+  <text x="410" y="470" class="label">Metrics</text>
+  <text x="410" y="498" class="small">scrape / export</text>
+
+  <rect x="140" y="550" width="460" height="110" class="box" />
+  <text x="160" y="595" class="label">Tracing</text>
+  <text x="160" y="625" class="small">propagation across services</text>
+
+  <!-- middle: collection -->
+  <rect x="710" y="250" width="360" height="150" class="box" />
+  <text x="740" y="300" class="label">Collectors</text>
+  <text x="740" y="330" class="small">OpenTelemetry / agents</text>
+
+  <rect x="710" y="460" width="360" height="150" class="box" />
+  <text x="740" y="510" class="label">Pipelines</text>
+  <text x="740" y="540" class="small">enrich • batch • route</text>
+
+  <!-- right: backends -->
+  <rect x="1140" y="190" width="420" height="520" class="box" />
+  <text x="1170" y="235" class="label">Backends</text>
+  <text x="1170" y="265" class="small">durable storage + query</text>
+
+  <rect x="1185" y="310" width="330" height="90" class="box" />
+  <text x="1205" y="350" class="label">Metrics DB</text>
+  <text x="1205" y="378" class="small">Prom / Mimir</text>
+
+  <rect x="1185" y="430" width="330" height="90" class="box" />
+  <text x="1205" y="470" class="label">Logs DB</text>
+  <text x="1205" y="498" class="small">Loki / Elastic</text>
+
+  <rect x="1185" y="550" width="330" height="90" class="box" />
+  <text x="1205" y="590" class="label">Traces DB</text>
+  <text x="1205" y="618" class="small">Tempo / Jaeger</text>
+
+  <!-- bottom right: consumers -->
+  <rect x="780" y="700" width="780" height="130" class="box" />
+  <text x="810" y="750" class="label">Dashboards &amp; Alerts</text>
+  <text x="810" y="780" class="small">SLOs • alert rules • incident context</text>
+
+  <!-- arrows from cluster to collectors -->
+  <path class="stroke" d="M360 355 H710" marker-end="url(#arrow)" />
+  <path class="stroke" d="M600 475 H710" marker-end="url(#arrow)" />
+  <path class="stroke" d="M600 605 H710" marker-end="url(#arrow)" />
+
+  <!-- collectors to pipelines -->
+  <path class="stroke" d="M890 400 V460" marker-end="url(#arrow)" />
+
+  <!-- pipelines to backends -->
+  <path class="stroke" d="M1070 535 H1140" marker-end="url(#arrow)" />
+  <path class="stroke" d="M1070 505 H1140" marker-end="url(#arrow)" />
+
+  <!-- backends to consumers -->
+  <path class="stroke" d="M1350 710 V700" marker-end="url(#arrow)" />
+  <path class="stroke" d="M1250 710 V700" marker-end="url(#arrow)" />
+  <path class="stroke" d="M1450 710 V700" marker-end="url(#arrow)" />
+
+  <rect x="80" y="820" width="1440" height="1" fill="#0a0a0a" fill-opacity="0.5" />
+  <text x="80" y="858" class="small">Generated diagram • signal flow from cluster → collectors → backends</text>
+</svg>

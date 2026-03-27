@@ -25,14 +25,16 @@ export default function ExperienceSection() {
   ]
 
   return (
-    <AnimatedSection id="experience" className="relative z-10 py-24 px-4">
+    <AnimatedSection id="experience" className="relative z-10 border-t border-border/60 py-16 sm:py-24 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center gap-3 mb-12">
-          <div className="w-12 h-[2px] bg-primary" />
-          <h2 className="text-sm font-medium text-primary uppercase tracking-wider">{t("experience.section")}</h2>
+        <div className="mb-10 sm:mb-14 flex items-center gap-4">
+          <div className="h-px w-14 bg-border" />
+          <h2 className="font-mono text-xs uppercase tracking-[0.34em] text-muted-foreground">
+            {t("experience.section")}
+          </h2>
         </div>
-        
-        <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-balance">
+
+        <h3 className="text-4xl md:text-6xl font-semibold tracking-tight text-foreground mb-10 sm:mb-12 text-balance">
           {t("experience.title")}
         </h3>
         
@@ -40,16 +42,16 @@ export default function ExperienceSection() {
           {experiences.map((exp, index) => (
             <Card
               key={index}
-              className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-colors"
+              className="rounded-none bg-card/35 backdrop-blur-sm border-border/70 hover:border-foreground/30 transition-colors"
             >
               <CardHeader>
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
                     <CardTitle className="text-xl text-foreground flex items-center gap-2">
-                      <Briefcase className="w-5 h-5 text-primary" />
+                      <Briefcase className="w-5 h-5 text-foreground" />
                       {exp.title}
                     </CardTitle>
-                    <CardDescription className="text-primary mt-1 font-medium">
+                    <CardDescription className="text-muted-foreground mt-1 font-medium">
                       {exp.company}
                     </CardDescription>
                   </div>
@@ -69,7 +71,7 @@ export default function ExperienceSection() {
                 <ul className="space-y-3">
                   {exp.tasks.map((task, taskIndex) => (
                     <li key={taskIndex} className="flex items-start gap-3 text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-none bg-foreground/70 mt-2 shrink-0" />
                       <span>{task}</span>
                     </li>
                   ))}

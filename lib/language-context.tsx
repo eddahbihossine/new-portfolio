@@ -25,7 +25,7 @@ const translations = {
     
     // Hero
     "hero.location": "Lyon, France",
-    "hero.title": "Ingénieur",
+     "hero.title": "Ingénieur Cloud . Étudiant en architecture des systèmes",
     "hero.devops": "DevOps",
     "hero.cloud": "Cloud",
     "hero.description": "Spécialisé en automatisation, développement Python et intégration de solutions d'exploitation. Passionné par la création de scripts et pipelines d'automatisation, la mise en place de monitoring/alerting et l'optimisation d'infrastructures.",
@@ -118,7 +118,7 @@ const translations = {
     
     // Hero
     "hero.location": "Lyon, France",
-    "hero.title": "Engineer",
+    "hero.title": " Cloud Engineer . System administation architecture student",
     "hero.devops": "DevOps",
     "hero.cloud": "Cloud",
     "hero.description": "Specialized in automation, Python development, and integration of operational solutions. Passionate about creating scripts and automation pipelines, implementing monitoring/alerting systems, and optimizing infrastructures.",

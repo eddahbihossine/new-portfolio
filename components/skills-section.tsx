@@ -43,14 +43,16 @@ export default function SkillsSection() {
   ]
 
   return (
-    <AnimatedSection id="skills" className="relative z-10 py-24 px-4 bg-secondary/20">
+    <AnimatedSection id="skills" className="relative z-10 border-t border-border/60 py-16 sm:py-24 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center gap-3 mb-12">
-          <div className="w-12 h-[2px] bg-primary" />
-          <h2 className="text-sm font-medium text-primary uppercase tracking-wider">{t("skills.section")}</h2>
+        <div className="mb-14 flex items-center gap-4">
+          <div className="h-px w-14 bg-border" />
+          <h2 className="font-mono text-xs uppercase tracking-[0.34em] text-muted-foreground">
+            {t("skills.section")}
+          </h2>
         </div>
         
-        <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-balance">
+        <h3 className="text-4xl md:text-6xl font-semibold tracking-tight text-foreground mb-12 text-balance">
           {t("skills.title")}
         </h3>
         
@@ -58,12 +60,12 @@ export default function SkillsSection() {
           {skillCategories.map((category, index) => (
             <Card
               key={index}
-              className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all hover:scale-[1.02]"
+              className="rounded-none bg-card/35 backdrop-blur-sm border-border/70 hover:border-foreground/30 transition-all"
             >
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-3 text-lg text-foreground">
-                  <div className="p-2 rounded-lg bg-primary/10">
-                    <category.icon className="w-5 h-5 text-primary" />
+                  <div className="p-2 rounded-none border border-border/60 bg-background/30">
+                    <category.icon className="w-5 h-5 text-foreground" />
                   </div>
                   {category.title}
                 </CardTitle>
@@ -74,7 +76,7 @@ export default function SkillsSection() {
                     <Badge
                       key={skillIndex}
                       variant="secondary"
-                      className="bg-secondary/80 text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                      className="rounded-none border border-border/60 bg-background/30 text-muted-foreground hover:bg-foreground hover:text-background transition-colors"
                     >
                       {skill}
                     </Badge>

@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 42,
     fontSize: 11,
     fontFamily: "Helvetica",
-    color: "#111827",
+    color: "#111111",
     lineHeight: 1.35,
   },
   header: {
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   title: {
     marginTop: 4,
     fontSize: 12,
-    color: "#374151",
+    color: "#444444",
   },
   metaRow: {
     marginTop: 8,
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   meta: {
     fontSize: 10,
-    color: "#374151",
+    color: "#444444",
   },
   section: {
     marginTop: 14,
@@ -54,11 +54,11 @@ const styles = StyleSheet.create({
     letterSpacing: 0.4,
     textTransform: "uppercase",
     marginBottom: 8,
-    color: "#111827",
+    color: "#111111",
   },
   line: {
     borderBottomWidth: 1,
-    borderBottomColor: "#E5E7EB",
+    borderBottomColor: "#dddddd",
     marginTop: 10,
   },
   itemTitle: {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   itemMeta: {
     fontSize: 10,
-    color: "#374151",
+    color: "#444444",
     marginBottom: 6,
   },
   bullet: {
@@ -79,11 +79,11 @@ const styles = StyleSheet.create({
   bulletDot: {
     width: 10,
     textAlign: "center",
-    color: "#6B7280",
+    color: "#666666",
   },
   bulletText: {
     flex: 1,
-    color: "#111827",
+    color: "#111111",
   },
   chips: {
     flexDirection: "row",
@@ -95,9 +95,9 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     paddingHorizontal: 8,
     borderWidth: 1,
-    borderColor: "#E5E7EB",
+    borderColor: "#dddddd",
     borderRadius: 6,
-    color: "#111827",
+    color: "#111111",
   },
 })
 
@@ -128,7 +128,7 @@ function t(lang: ResumeLanguage, key: string) {
   return dict[lang][key] ?? key
 }
 
-function MapPinIcon({ color = "#374151" }: { color?: string }) {
+function MapPinIcon({ color = "#444444" }: { color?: string }) {
   return (
     <Svg
       width={10}

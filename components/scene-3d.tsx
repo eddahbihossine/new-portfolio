@@ -103,7 +103,7 @@ function ParticleField({ isDark }: { isDark: boolean }) {
         </bufferGeometry>
         <pointsMaterial 
           size={0.05} 
-          color={isDark ? "#5eead4" : "#0d9488"} 
+          color={isDark ? "#ffffff" : "#000000"} 
           transparent 
           opacity={isDark ? 0.6 : 0.4} 
         />
@@ -113,17 +113,17 @@ function ParticleField({ isDark }: { isDark: boolean }) {
 }
 
 function Scene({ isDark }: { isDark: boolean }) {
-  const primaryColor = isDark ? "#5eead4" : "#0d9488"
-  const secondaryColor = isDark ? "#38bdf8" : "#0284c7"
-  const tertiaryColor = isDark ? "#0ea5e9" : "#0369a1"
-  const bgColor = isDark ? "#0f172a" : "#f8fafc"
+  const primaryColor = isDark ? "#ffffff" : "#000000"
+  const secondaryColor = primaryColor
+  const tertiaryColor = primaryColor
+  const bgColor = isDark ? "#000000" : "#ffffff"
   
   return (
     <>
       <color attach="background" args={[bgColor]} />
       <ambientLight intensity={isDark ? 0.3 : 0.5} />
-      <pointLight position={[10, 10, 10]} intensity={isDark ? 1 : 0.8} color={primaryColor} />
-      <pointLight position={[-10, -10, -10]} intensity={isDark ? 0.5 : 0.3} color={secondaryColor} />
+      <pointLight position={[10, 10, 10]} intensity={isDark ? 1 : 0.8} color="#ffffff" />
+      <pointLight position={[-10, -10, -10]} intensity={isDark ? 0.5 : 0.3} color="#ffffff" />
       <spotLight position={[0, 10, 0]} intensity={isDark ? 0.5 : 0.4} color="#ffffff" angle={0.3} penumbra={1} />
       
       <Stars radius={100} depth={50} count={isDark ? 1000 : 500} factor={4} saturation={0} fade speed={1} />

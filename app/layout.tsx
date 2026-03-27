@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, Cinzel } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { PageTransitions } from '@/components/page-transitions'
@@ -9,6 +9,7 @@ import './globals.css'
 
 const geistSans = Geist({ subsets: ["latin"], variable: "--font-sans" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" })
+const epicSerif = Cinzel({ subsets: ["latin"], weight: ["400", "600", "700"], variable: "--font-epic" })
 
 export const metadata: Metadata = {
   title: 'El Houssaine Eddahbi | DevOps & Cloud Engineer',
@@ -40,10 +41,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${epicSerif.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           enableColorScheme
           disableTransitionOnChange

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/delivery-pipelines/release-metadata.schema.json",
+  "title": "ReleaseMetadata",
+  "type": "object",
+  "required": ["serviceId", "version", "commitSha", "buildId", "createdAt"],
+  "additionalProperties": false,
+  "properties": {
+    "serviceId": { "type": "string" },
+    "version": { "type": "string" },
+    "commitSha": { "type": "string", "minLength": 7 },
+    "buildId": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": { "type": "string", "enum": ["container", "package", "binary"] },
+        "uri": { "type": "string" },
+        "digest": { "type": "string" }
+      }
+    },
+    "deployments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["environment", "deployedAt"],
+        "additionalProperties": false,
+        "properties": {
+          "environment": { "type": "string" },
+          "deployedAt": { "type": "string", "format": "date-time" },
+          "status": { "type": "string", "enum": ["success", "failed", "rolled-back"] }
+        }
+      }
+    }
+  }
+}
