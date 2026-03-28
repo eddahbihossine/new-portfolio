@@ -20,6 +20,7 @@ const translations = {
     "nav.education": "Formation",
     "nav.contact": "Contact",
     "nav.consulting": "Consulting",
+    "nav.blog": "Blog",
     "nav.cv": "CV",
     "nav.download_cv": "Télécharger CV",
     
@@ -113,6 +114,7 @@ const translations = {
     "nav.education": "Education",
     "nav.contact": "Contact",
     "nav.consulting": "Consulting",
+    "nav.blog": "Blog",
     "nav.cv": "CV",
     "nav.download_cv": "Download CV",
     

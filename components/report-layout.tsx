@@ -4,12 +4,13 @@ import Footer from "@/components/footer"
 import type { ReactNode } from "react"
 
 type ReportLayoutProps = {
+  kicker?: string
   title: string
   subtitle?: string
   children: ReactNode
 }
 
-export default function ReportLayout({ title, subtitle, children }: ReportLayoutProps) {
+export default function ReportLayout({ kicker = "Report", title, subtitle, children }: ReportLayoutProps) {
   return (
     <main className="relative min-h-screen bg-background overflow-x-hidden">
       <Navbar />
@@ -22,7 +23,7 @@ export default function ReportLayout({ title, subtitle, children }: ReportLayout
           <div className="max-w-4xl mx-auto">
             <header>
               <div className="font-mono text-[10px] uppercase tracking-[0.34em] text-muted-foreground">
-                Report
+                {kicker}
               </div>
               <h1 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight text-foreground text-balance">
                 {title}

@@ -47,10 +47,12 @@ export default function Navbar() {
         { name: t("nav.education"), href: "#education" },
         { name: t("nav.contact"), href: "#contact" },
         { name: t("nav.consulting"), href: "/consulting" },
+        { name: t("nav.blog"), href: "/blog" },
       ]
     : [
         { name: t("nav.home"), href: "/" },
         { name: t("nav.consulting"), href: "/consulting" },
+        { name: t("nav.blog"), href: "/blog" },
         { name: t("nav.contact"), href: "#contact" },
       ]
 
@@ -75,12 +77,12 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center justify-end gap-8">
+          <div className="hidden xl:flex items-center justify-end gap-5 2xl:gap-8">
             {navLinks.map((link) => (
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="group relative inline-flex h-9 items-center text-[11px] font-semibold uppercase tracking-[0.34em] text-muted-foreground transition-colors hover:text-foreground leading-none"
+                className="group relative inline-flex h-9 items-center whitespace-nowrap text-[10px] 2xl:text-[11px] font-semibold uppercase tracking-[0.26em] 2xl:tracking-[0.34em] text-muted-foreground transition-colors hover:text-foreground leading-none"
                 whileHover={shouldReduceMotion ? undefined : { y: -1 }}
                 transition={{ duration: 0.2 }}
               >
@@ -102,7 +104,7 @@ export default function Navbar() {
                   variant="outline"
                   className="rounded-none h-9 px-3 py-0 leading-none"
                 >
-                  <span className="text-[11px] font-semibold tracking-[0.32em]">Settings</span>
+                  <span className="text-[10px] 2xl:text-[11px] font-semibold tracking-[0.26em] 2xl:tracking-[0.32em] whitespace-nowrap">Settings</span>
                   <ChevronDown className="h-4 w-4 opacity-70" />
                 </Button>
               </DropdownMenuTrigger>

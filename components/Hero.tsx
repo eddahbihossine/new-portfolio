@@ -110,12 +110,12 @@ export default function Hero() {
         </div>
 
         {/* Main hero */}
-        <div className="relative mx-auto w-full max-w-6xl flex items-start gap-5 sm:gap-14">
+        <div className="relative mx-auto w-full max-w-6xl flex flex-col lg:flex-row items-center lg:items-start gap-6 sm:gap-10 lg:gap-14">
             <motion.div
               initial={shouldReduceMotion ? undefined : { opacity: 0, y: 12 }}
               animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
               transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-              className="flex-shrink-0"
+              className="flex-shrink-0 self-center lg:self-auto"
             >
               <motion.div
                 className="group relative border border-border/70 bg-card/30 p-1.5 sm:p-2 backdrop-blur-sm shadow-md"
@@ -141,12 +141,12 @@ export default function Hero() {
               </motion.div>
             </motion.div>
 
-            <div className="flex-1 min-w-0 text-left border-l border-border/60 pl-4 sm:pl-10 pt-1 sm:pt-10">
+            <div className="flex-1 min-w-0 w-full text-center lg:text-left border-t lg:border-t-0 lg:border-l border-border/60 pt-6 lg:pt-10 pl-0 lg:pl-10">
               <motion.div
                 initial={shouldReduceMotion ? undefined : { opacity: 0, y: 14 }}
                 animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="mb-6 flex items-center justify-start gap-3 flex-wrap"
+                className="mb-6 flex items-center justify-center lg:justify-start gap-3 flex-wrap"
               >
                 <span className="inline-flex items-center gap-2 rounded-none border border-border/60 bg-background/40 px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs font-medium uppercase tracking-[0.2em] sm:tracking-[0.22em] text-foreground">
                   <GitBranch className="h-4 w-4" />
@@ -178,7 +178,7 @@ export default function Hero() {
                 initial={shouldReduceMotion ? undefined : { opacity: 0, y: 14 }}
                 animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-                className="mx-0 mb-8 sm:mb-10 max-w-2xl text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty"
+                className="mx-auto lg:mx-0 mb-8 sm:mb-10 max-w-2xl text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty"
               >
                 {t("hero.description")}
               </motion.p>
@@ -215,7 +215,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center justify-start gap-4">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
                 <MagneticButton>
                   <Button asChild size="lg" className="gap-2 rounded-none">
                     <a href={`/api/resume?lang=${language}`} download>
