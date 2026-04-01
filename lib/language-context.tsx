@@ -60,6 +60,14 @@ const translations = {
     // Technologies
     "technologies.section": "Technologies",
     "technologies.title": "Technologies que j’utilise",
+
+    // Projects
+    "projects.section": "Projets",
+    "projects.title": "Sélection de réalisations",
+    "projects.case_study": "Étude de cas",
+    "projects.report": "Rapport",
+    "projects.code": "Code",
+    "projects.live": "Démo",
     
     // Certifications
     "certifications.section": "Certifications",
@@ -154,6 +162,14 @@ const translations = {
     // Technologies
     "technologies.section": "Technologies",
     "technologies.title": "Technologies I use",
+
+    // Projects
+    "projects.section": "Projects",
+    "projects.title": "Selected Work",
+    "projects.case_study": "Case Study",
+    "projects.report": "Report",
+    "projects.code": "Code",
+    "projects.live": "Live",
     
     // Certifications
     "certifications.section": "Certifications",

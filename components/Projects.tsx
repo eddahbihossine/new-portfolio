@@ -5,6 +5,7 @@ import { ExternalLink, FileText, Github } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { AnimatedSection } from "@/components/animated-section"
+import { useLanguage } from "@/lib/language-context"
 
 type Project = {
   title: string
@@ -38,6 +39,7 @@ const projects: Project[] = [
 
 export default function Projects() {
   const shouldReduceMotion = useReducedMotion()
+  const { t } = useLanguage()
 
   return (
     <AnimatedSection id="projects" className="relative z-10 border-t border-border/60 py-16 sm:py-24 px-4">
@@ -46,10 +48,12 @@ export default function Projects() {
           <div className="col-span-12 lg:col-span-7">
             <div className="mb-4 flex items-center gap-4">
               <div className="h-px w-14 bg-border" />
-              <h2 className="font-mono text-xs uppercase tracking-[0.34em] text-muted-foreground">Projects</h2>
+              <h2 className="font-mono text-xs uppercase tracking-[0.34em] text-muted-foreground">
+                {t("projects.section")}
+              </h2>
             </div>
             <h3 className="text-4xl md:text-6xl font-semibold tracking-tight text-foreground text-balance">
-              Selected Work
+              {t("projects.title")}
             </h3>
           </div>
           <div className="col-span-12 lg:col-span-5">
@@ -87,7 +91,7 @@ export default function Projects() {
                     </div>
                     <div className="hidden md:block text-right">
                       <div className="inline-flex items-center gap-2 border border-border/60 bg-background/30 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
-                        Case Study
+                        {t("projects.case_study")}
                       </div>
                     </div>
                   </div>
@@ -114,14 +118,14 @@ export default function Projects() {
                     <Button variant="outline" size="sm" asChild className="rounded-none">
                       <a href={project.reportHref} target="_blank" rel="noopener noreferrer">
                         <FileText className="mr-2 h-4 w-4" />
-                        Report
+                        {t("projects.report")}
                       </a>
                     </Button>
                     {project.repo ? (
                       <Button variant="outline" size="sm" asChild className="rounded-none">
                         <a href={project.repo} target="_blank" rel="noopener noreferrer">
                           <Github className="mr-2 h-4 w-4" />
-                          Code
+                          {t("projects.code")}
                         </a>
                       </Button>
                     ) : null}
@@ -129,7 +133,7 @@ export default function Projects() {
                       <Button size="sm" asChild className="rounded-none">
                         <a href={project.href} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="mr-2 h-4 w-4" />
-                          Live
+                          {t("projects.live")}
                         </a>
                       </Button>
                     ) : null}
