@@ -5,6 +5,7 @@ import { AnimatedCloudBackground } from "@/components/animated-cloud-background"
 import ExperienceSection from "@/components/experience-section"
 import SkillsSection from "@/components/skills-section"
 import TechnologiesSection from "@/components/technologies-section"
+import { ParallaxBetweenSections } from "@/components/parallax-between-sections"
 import CertificationsSection from "@/components/certifications-section"
 import EducationSection from "@/components/education-section"
 import LanguagesSection from "@/components/languages-section"
@@ -26,9 +27,11 @@ export default function Portfolio() {
       <div className="relative z-10">
         <Hero />
         <Projects />
-        <ExperienceSection />
-        <SkillsSection />
-        <TechnologiesSection />
+        <ParallaxBetweenSections>
+          <ExperienceSection />
+          <SkillsSection />
+          <TechnologiesSection />
+        </ParallaxBetweenSections>
         <CertificationsSection />
         <EducationSection />
         <LanguagesSection />

@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { PageTransitions } from '@/components/page-transitions'
 import { MagneticCursor } from '@/components/MagneticCursor'
+import { SmoothHashScroll } from '@/components/smooth-hash-scroll'
 import { LanguageProvider } from '@/lib/language-context'
 import './globals.css'
 
@@ -50,6 +51,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LanguageProvider>
+            <SmoothHashScroll />
             <MagneticCursor />
             <PageTransitions>{children}</PageTransitions>
           </LanguageProvider>
